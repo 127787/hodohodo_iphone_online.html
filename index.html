@@ -1,182 +1,396 @@
 <!DOCTYPE html>
-<!-- saved from url=(0060)file:///C:/Users/yuhod/Downloads/hodohodo_iphone_online.html -->
-<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f5f5f5">
 <title>ほどほどに</title>
+
 <style>
-  * { box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-    background: #f5f5f5;
-    margin: 0;
-    padding: max(18px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
-    text-align: center;
-    color: #111;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .container { width: 100%; max-width: 440px; margin: 0 auto; }
-  h1 { margin: 10px 0 28px; font-size: 30px; }
-  .label { font-size: 20px; }
-  #total { font-size: clamp(54px, 15vw, 68px); font-weight: 700; margin: 14px 0 24px; font-variant-numeric: tabular-nums; }
-  button {
-    display: block;
-    width: 100%;
-    min-height: 76px;
-    padding: 14px;
-    margin: 10px 0;
-    border: 0;
-    border-radius: 16px;
-    background: #fff;
-    color: #111;
-    font: inherit;
-    font-size: 23px;
-    box-shadow: 0 2px 7px rgba(0,0,0,.12);
-    cursor: pointer;
-    touch-action: manipulation;
-  }
-  button:active { transform: scale(.985); background: #f0f0f0; }
-  .reset { background: #ff3b30; color: #fff; margin-top: 22px; }
-  .reset:active { background: #df2d25; }
-  .graphArea {
-    background: #fff;
-    margin-top: 28px;
-    padding: 16px 12px;
-    border-radius: 16px;
-    box-shadow: 0 2px 7px rgba(0,0,0,.09);
-    text-align: left;
-  }
-  .graphArea h2 { text-align: center; font-size: 19px; margin: 2px 0 16px; }
-  .barRow { display: flex; align-items: center; gap: 8px; margin: 11px 0; min-height: 22px; }
-  .date { flex: 0 0 48px; font-size: 12px; color: #555; }
-  .barTrack { flex: 1; min-width: 0; height: 22px; background: #f1f1f1; border-radius: 6px; overflow: hidden; }
-  .bar { height: 100%; min-width: 0; border-radius: 6px; }
-  .value { flex: 0 0 48px; text-align: right; font-size: 12px; font-variant-numeric: tabular-nums; }
-  .note { color: #777; font-size: 12px; line-height: 1.5; margin: 14px 4px 0; }
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+    background:#f5f5f5;
+    margin:0;
+    padding:max(18px,env(safe-area-inset-top)) 16px max(24px,env(safe-area-inset-bottom));
+    text-align:center;
+    color:#111;
+    -webkit-tap-highlight-color:transparent;
+}
+
+.container{
+    width:100%;
+    max-width:440px;
+    margin:0 auto;
+}
+
+h1{
+    margin:10px 0 28px;
+    font-size:30px;
+}
+
+.label{
+    font-size:20px;
+}
+
+#total{
+    font-size:clamp(54px,15vw,68px);
+    font-weight:700;
+    margin:14px 0 24px;
+}
+
+button{
+    display:block;
+    width:100%;
+    min-height:76px;
+    padding:14px;
+    margin:10px 0;
+    border:0;
+    border-radius:16px;
+    background:#fff;
+    color:#111;
+    font-size:23px;
+    box-shadow:0 2px 7px rgba(0,0,0,.12);
+}
+
+button:active{
+    transform:scale(.985);
+}
+
+.drinkRow{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+}
+
+.badge{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:#d1d1d6;
+    color:#111;
+    font-size:18px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.reset{
+    background:#ff3b30;
+    color:#fff;
+    margin-top:22px;
+}
+
+.graphArea{
+    background:#fff;
+    margin-top:28px;
+    padding:16px 12px;
+    border-radius:16px;
+    box-shadow:0 2px 7px rgba(0,0,0,.09);
+    text-align:left;
+}
+
+.graphArea h2{
+    text-align:center;
+    font-size:19px;
+    margin:2px 0 16px;
+}
+
+.barRow{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:11px 0;
+}
+
+.date{
+    flex:0 0 50px;
+    font-size:12px;
+    color:#555;
+}
+
+.barTrack{
+    flex:1;
+    height:22px;
+    background:#f1f1f1;
+    border-radius:6px;
+    overflow:hidden;
+}
+
+.bar{
+    height:100%;
+    border-radius:6px;
+}
+
+.value{
+    flex:0 0 50px;
+    text-align:right;
+    font-size:12px;
+}
+
+.note{
+    color:#777;
+    font-size:12px;
+    margin-top:16px;
+    line-height:1.5;
+}
+
 </style>
 </head>
+
 <body>
-<main class="container">
-  <h1>ほどほどに</h1>
-  <div class="label">本日のアルコール量</div>
-  <div id="total" aria-live="polite" style="color: rgb(17, 17, 17);">0ml</div>
 
-  <button type="button" onclick="addDrink(5)">🍺 ビール</button>
-  <button type="button" onclick="addDrink(9)">🥃 ウイスキー</button>
-  <button type="button" onclick="addDrink(8)">⚱️ 焼酎</button>
-  <button type="button" onclick="addDrink(9)">🍶 日本酒</button>
-  <button type="button" onclick="addDrink(7)">🍷 ワイン</button>
+<div class="container">
 
-  <section class="graphArea" aria-label="過去7日間の記録">
-    <h2>過去7日間</h2>
-    <div id="graph"><div class="barRow"><div class="date">11/15</div><div class="barTrack"><div class="bar" style="width: 0%; background: rgb(0, 122, 255);"></div></div><div class="value">0ml</div></div><div class="barRow"><div class="date">11/16</div><div class="barTrack"><div class="bar" style="width: 0%; background: rgb(0, 122, 255);"></div></div><div class="value">0ml</div></div><div class="barRow"><div class="date">11/17</div><div class="barTrack"><div class="bar" style="width: 0%; background: rgb(0, 122, 255);"></div></div><div class="value">0ml</div></div><div class="barRow"><div class="date">11/18</div><div class="barTrack"><div class="bar" style="width: 0%; background: rgb(0, 122, 255);"></div></div><div class="value">0ml</div></div><div class="barRow"><div class="date">11/19</div><div class="barTrack"><div class="bar" style="width: 0%; background: rgb(0, 122, 255);"></div></div><div class="value">0ml</div></div><div class="barRow"><div class="date">11/20</div><div class="barTrack"><div class="bar" style="width: 0%; background: rgb(0, 122, 255);"></div></div><div class="value">0ml</div></div><div class="barRow"><div class="date">11/21</div><div class="barTrack"><div class="bar" style="width: 0%; background: rgb(0, 122, 255);"></div></div><div class="value">0ml</div></div></div>
-  </section>
+<h1>ほどほどに</h1>
 
-  <button type="button" class="reset" onclick="resetToday()">リセット</button>
-  <p class="note">記録はこのブラウザ内に保存されます。ブラウザのデータを消去したり、別のブラウザ・別の端末で開いた場合は共有されません。</p>
-</main>
+<div class="label">本日のアルコール量</div>
+
+<div id="total">0ml</div>
+
+<button onclick="addDrink('beer',5)">
+    <div class="drinkRow">
+        <span>🍺 ビール</span>
+        <span class="badge" id="beerCount">0</span>
+    </div>
+</button>
+
+<button onclick="addDrink('whisky',9)">
+    <div class="drinkRow">
+        <span>🥃 ウイスキー</span>
+        <span class="badge" id="whiskyCount">0</span>
+    </div>
+</button>
+
+<button onclick="addDrink('shochu',8)">
+    <div class="drinkRow">
+        <span>⚱️ 焼酎</span>
+        <span class="badge" id="shochuCount">0</span>
+    </div>
+</button>
+
+<button onclick="addDrink('sake',10)">
+    <div class="drinkRow">
+        <span>🍶 日本酒</span>
+        <span class="badge" id="sakeCount">0</span>
+    </div>
+</button>
+
+<button onclick="addDrink('wine',7)">
+    <div class="drinkRow">
+        <span>🍷 ワイン</span>
+        <span class="badge" id="wineCount">0</span>
+    </div>
+</button>
+
+<div class="graphArea">
+
+<h2>過去7日間</h2>
+
+<div id="graph"></div>
+
+</div>
+
+<button class="reset" onclick="resetToday()">
+リセット
+</button>
+
+<div class="note">
+記録はこの端末のブラウザ内に保存されます
+</div>
+
+</div>
 
 <script>
-"use strict";
-const STORAGE_KEY = "alcoholHistory";
 
-function localDateKey(date = new Date()) {
-  const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, "0");
-  const d = String(date.getDate()).padStart(2, "0");
-  return `${y}-${m}-${d}`;
+const STORAGE_KEY = "hodohodoHistory";
+
+function localDateKey(date=new Date()){
+
+    const y = date.getFullYear();
+    const m = String(date.getMonth()+1).padStart(2,"0");
+    const d = String(date.getDate()).padStart(2,"0");
+
+    return `${y}-${m}-${d}`;
 }
 
-function loadData() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return {};
-    const parsed = JSON.parse(raw);
-    return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
-  } catch (error) {
-    console.error("記録を読み込めませんでした:", error);
-    return {};
-  }
+function emptyDay(){
+
+    return {
+        total:0,
+        beer:0,
+        whisky:0,
+        shochu:0,
+        sake:0,
+        wine:0
+    };
 }
 
-function saveData(data) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  } catch (error) {
-    alert("データを保存できませんでした。ブラウザの保存容量や設定をご確認ください。");
-    console.error(error);
-  }
+function loadData(){
+
+    try{
+
+        return JSON.parse(
+            localStorage.getItem(STORAGE_KEY)
+        ) || {};
+
+    }catch{
+
+        return {};
+    }
 }
 
-function addDrink(value) {
-  const data = loadData();
-  const today = localDateKey();
-  data[today] = (Number(data[today]) || 0) + value;
-  saveData(data);
-  updateScreen();
+function saveData(data){
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(data)
+    );
 }
 
-function resetToday() {
-  if (confirm("本日のデータをリセットしますか？")) {
+function addDrink(type,value){
+
     const data = loadData();
-    data[localDateKey()] = 0;
+
+    const today = localDateKey();
+
+    if(!data[today]){
+
+        data[today] = emptyDay();
+    }
+
+    data[today].total += value;
+    data[today][type]++;
+
     saveData(data);
+
     updateScreen();
-  }
 }
 
-function updateScreen() {
-  const data = loadData();
-  const total = Number(data[localDateKey()]) || 0;
-  const totalElement = document.getElementById("total");
-  totalElement.textContent = `${total}ml`;
-  totalElement.style.color = total >= 51 ? "#ff3b30" : "#111";
-  drawGraph(data);
+function resetToday(){
+
+    if(confirm("本日のデータをリセットしますか？")){
+
+        const data = loadData();
+
+        data[localDateKey()] = emptyDay();
+
+        saveData(data);
+
+        updateScreen();
+    }
 }
 
-function drawGraph(data = loadData()) {
-  const graph = document.getElementById("graph");
-  graph.replaceChildren();
+function updateScreen(){
 
-  const days = [];
-  for (let i = 6; i >= 0; i--) {
-    const date = new Date();
-    date.setHours(12, 0, 0, 0);
-    date.setDate(date.getDate() - i);
-    const key = localDateKey(date);
-    days.push({ key, value: Math.max(0, Number(data[key]) || 0) });
-  }
+    const data = loadData();
 
-  const maxValue = Math.max(51, ...days.map(day => day.value));
-  for (const day of days) {
-    const row = document.createElement("div");
-    row.className = "barRow";
+    const todayData =
+        data[localDateKey()] || emptyDay();
 
-    const dateLabel = document.createElement("div");
-    dateLabel.className = "date";
-    dateLabel.textContent = day.key.slice(5).replace("-", "/");
+    const total = todayData.total;
 
-    const track = document.createElement("div");
-    track.className = "barTrack";
+    document.getElementById("total").textContent =
+        total + "ml";
 
-    const bar = document.createElement("div");
-    bar.className = "bar";
-    bar.style.width = `${(day.value / maxValue) * 100}%`;
-    bar.style.background = day.value >= 51 ? "#ff3b30" : "#007aff";
-    track.appendChild(bar);
+    document.getElementById("total").style.color =
+        total >= 51 ? "#ff3b30" : "#111";
 
-    const value = document.createElement("div");
-    value.className = "value";
-    value.textContent = `${day.value}ml`;
+    document.getElementById("beerCount").textContent =
+        todayData.beer;
 
-    row.append(dateLabel, track, value);
-    graph.appendChild(row);
-  }
+    document.getElementById("whiskyCount").textContent =
+        todayData.whisky;
+
+    document.getElementById("shochuCount").textContent =
+        todayData.shochu;
+
+    document.getElementById("sakeCount").textContent =
+        todayData.sake;
+
+    document.getElementById("wineCount").textContent =
+        todayData.wine;
+
+    drawGraph(data);
+}
+
+function drawGraph(data){
+
+    const graph =
+        document.getElementById("graph");
+
+    graph.innerHTML = "";
+
+    const days = [];
+
+    for(let i=6;i>=0;i--){
+
+        const date = new Date();
+
+        date.setDate(
+            date.getDate()-i
+        );
+
+        const key =
+            localDateKey(date);
+
+        days.push({
+            key:key,
+            value:(data[key]?.total || 0)
+        });
+    }
+
+    const maxValue = Math.max(
+        51,
+        ...days.map(d => d.value)
+    );
+
+    days.forEach(day => {
+
+        const percent =
+            (day.value/maxValue)*100;
+
+        const row =
+            document.createElement("div");
+
+        row.className="barRow";
+
+        row.innerHTML = `
+            <div class="date">
+                ${day.key.slice(5).replace("-","/")}
+            </div>
+
+            <div class="barTrack">
+                <div class="bar"
+                    style="
+                    width:${percent}%;
+                    background:${
+                        day.value >= 51
+                        ? '#ff3b30'
+                        : '#007aff'
+                    };
+                ">
+                </div>
+            </div>
+
+            <div class="value">
+                ${day.value}ml
+            </div>
+        `;
+
+        graph.appendChild(row);
+    });
 }
 
 updateScreen();
+
 </script>
 
-
-</body></html>
+</body>
+</html>
